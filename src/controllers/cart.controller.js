@@ -97,8 +97,6 @@ const updateAllProducts= async (req, res) => {
 
 const getPurchase= async(req, res)=>{
     const {idCart} = req.params;
-    console.log(req.rawHeaders[1].split(' ')[1]);
-    console.log(req.cookies.token);
     const response = await cartService.purchase(idCart,req.cookies.token);
     res.json({ response});
 }

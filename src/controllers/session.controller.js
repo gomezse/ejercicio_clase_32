@@ -46,7 +46,6 @@ const login = async (req, res) => {
       .cookie("token", token, { httpOnly: true })
       .json({ message: "Bienvenido a la pagina: ", token });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error });
   }
 }
