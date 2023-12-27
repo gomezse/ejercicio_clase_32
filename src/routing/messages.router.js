@@ -2,8 +2,6 @@ import {Router} from 'express';
 import {transporter} from "../utils/nodemailer.js";
 const router = Router();
 
-
-
 router.get("/",async (req,res)=>{
 
     const mailOptions = {
@@ -17,6 +15,7 @@ router.get("/",async (req,res)=>{
     await transporter.sendMail(mailOptions);
     res.send("Email enviado!");
 });
+
 router.post("/",async (req,res)=>{
     const {first_name,last_name,email,message}=req.body;
     const mailOptions = {

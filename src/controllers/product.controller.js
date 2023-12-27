@@ -1,5 +1,5 @@
 import { productsManager } from '../dao/models/mongoose/ProductsManager.js';
-
+import { generateProduct } from '../utils/faker.js';
 
 const getAll = async (req, res) => {
     try {
@@ -82,12 +82,22 @@ const updateProduct =  async (req, res) => {
     }
 }
 
-
+const getMockingProducts =  async (req, res) => {
+        let arrayProducts = [];
+        
+        for(let i=0 ;i<100;i++){
+            const product=generateProduct();
+            arrayProducts.push(product);    
+        }
+        
+        res.status(200).json({ message: 'Mocked Products', arrayProducts });
+} 
 
 export const productController ={
     "getAll":getAll,
     "getById":getById,
     "addProduct":addProduct,
     "deleteProduct":deleteProduct,
-    "updateProduct":updateProduct
+    "updateProduct":updateProduct,
+    "getMockingProducts":getMockingProducts
 }
