@@ -26,7 +26,7 @@ import "./utils/passport.js";
 
 import config from "./utils/config.js";
 import cors from "cors"
-
+import { errorMiddleware } from "./middlewares/errors.middleware.js";
 //configuracion del servidor
 const app = express();
 
@@ -62,6 +62,8 @@ app.use("/api/users", usersRouter);
 app.use("/api/tickets", ticketsRouter);
 app.use("/api/messages",messagesRouter);
 app.use("/", viewsRouter);
+
+app.use(errorMiddleware);
 
 const httpServer= app.listen(config.port, () => {
     console.log(`Escuchando al puerto ${config.port}`);
